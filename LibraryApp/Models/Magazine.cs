@@ -18,7 +18,7 @@ namespace LibraryApp.Models
 
 			 public override void DisplayInfo()
 		    {
-		        Console.WriteLine($"Журнал: {Title} / {Author} ({Year}) — Выпуск №{IssueNumber}");
+		        Console.WriteLine($"Журнал: {Title},Редактор: {Author},  Выпуск :{IssueNumber}");
 		   }
 		 }
 

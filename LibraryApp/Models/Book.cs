@@ -12,18 +12,21 @@ namespace LibraryApp.Models
         
             public int Pages { get; set; }
            
+            
+           
             public Book(string title, string author, int year, int pages)
 	        : base(title, author, year)
 
             {
+                Author= author;
                 Pages = pages;
                 
             }
             
              public override void DisplayInfo()
     	     {
-                    Console.WriteLine($"Книга: {Title} / {Author} ({Year}) — {Pages} стр.");
-            
+                    Console.WriteLine($"Книга: {Title},Автор: {Author},Год: {Year},Страниц: {Pages}");
+
              }
         
 
