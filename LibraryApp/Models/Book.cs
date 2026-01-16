@@ -6,25 +6,57 @@ using System.Threading.Tasks;
 
 namespace LibraryApp.Models
 {
-
-    public class Book : LibraryItem
+    public class Book : LibraryItem, IBorrowable
 
     {
-        public int Pages { get; set; }
+        
+            public int Pages { get; set; }
+           
+            public Book(string title, string author, int year, int pages)
+	        : base(title, author, year)
 
-        public Book(string title, string author, int year, int pages)
-          : base(title, author, year)
+            {
+                Pages = pages;
+                
+            }
+            
+             public override void DisplayInfo()
+    	     {
+                    Console.WriteLine($"Книга: {Title} / {Author} ({Year}) — {Pages} стр.");
+            
+             }
+        
 
+
+        public bool IsAvailable { get; set; } = true;
+        
+        
+
+        public void Borrow(string borrowerName)
         {
-            Pages = pages;
+            if (IsAvailable)
+
+            {
+                IsAvailable = false;
+                Console.WriteLine($"Книга '{Title}' выдана пользователю {borrowerName}");
+
+            }
+            else
+            {
+                Console.WriteLine($"Книга '{Title}' уже выдана");
+
+            }
+        }
+        public void Return()
+        {
+            IsAvailable = true;
+            Console.WriteLine($"Книга '{Title}' возвращена");
         }
 
-        public override void DisplayInfo()
-        {
-            Console.WriteLine($"Книга: {Title} / {Author} ({Year}) — {Pages} стр.");
-
-        }
     }
+   
+
+
 }
 
        
